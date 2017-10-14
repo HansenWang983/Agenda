@@ -1,0 +1,21 @@
+#include <iostream>
+#include <stdio.h>
+#include <string>
+#include "Date.hpp"
+using namespace std;
+
+
+
+int main(int argc, char const *argv[])
+{
+	// User u("wang","123","1@126.com","123456");
+	// User u2(u);
+	// u2.setName("hahah");
+	// cout<<u2.getName()<<endl<<u2.getPassword()<<endl<<u2.getEmail()<<endl<<u2.getPhone()<<endl;
+	string s;
+	cin>>s;
+	Date d=Date::stringToDate(s);
+	s=Date::dateToString(d);
+	cout<<s<<endl;
+	return 0;
+}

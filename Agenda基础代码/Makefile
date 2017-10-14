@@ -1,0 +1,37 @@
+CC := g++
+FLAGS := -std=c++11 -Wall -g 
+BIN_DIR := bin
+INC_DIR := include
+SRC_DIR := src
+BUI_DIR := build
+INCLUDE := -I./$(INC_DIR)
+$(BIN_DIR)/text: $(BUI_DIR)/Date.o $(BUI_DIR)/text.o $(BUI_DIR)/Meeting.o $(BUI_DIR)/User.o $(BUI_DIR)/Storage.o $(BUI_DIR)/AgendaService.o $(BUI_DIR)/AgendaUI.o $(BUI_DIR)/md5.o
+	@mkdir -p $(BIN_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) $(BUI_DIR)/User.o $(BUI_DIR)/Date.o $(BUI_DIR)/Meeting.o $(BUI_DIR)/Storage.o $(BUI_DIR)/AgendaService.o $(BUI_DIR)/AgendaUI.o $(BUI_DIR)/md5.o $(BUI_DIR)/text.o -o $@
+$(BUI_DIR)/User.o: $(SRC_DIR)/User.cpp
+	@mkdir -p $(BUI_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $(SRC_DIR)/User.cpp
+$(BUI_DIR)/Date.o: $(SRC_DIR)/Date.cpp
+	@mkdir -p $(BUI_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $(SRC_DIR)/Date.cpp
+$(BUI_DIR)/Meeting.o: $(SRC_DIR)/Meeting.cpp
+	@mkdir -p $(BUI_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $(SRC_DIR)/Meeting.cpp
+$(BUI_DIR)/Storage.o: $(SRC_DIR)/Storage.cpp
+	@mkdir -p $(BUI_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $(SRC_DIR)/Storage.cpp
+$(BUI_DIR)/AgendaService.o: $(SRC_DIR)/AgendaService.cpp
+	@mkdir -p $(BUI_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $(SRC_DIR)/AgendaService.cpp
+$(BUI_DIR)/AgendaUI.o: $(SRC_DIR)/AgendaUI.cpp
+	@mkdir -p $(BUI_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $(SRC_DIR)/AgendaUI.cpp
+$(BUI_DIR)/md5.o: $(SRC_DIR)/md5.cpp
+	@mkdir -p $(BUI_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $(SRC_DIR)/md5.cpp
+$(BUI_DIR)/text.o: $(SRC_DIR)/text.cpp
+	@mkdir -p $(BUI_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $(SRC_DIR)/text.cpp
+clean:
+	@rm -rf $(BUI_DIR)
+	@rm -rf $(BIN_DIR)
